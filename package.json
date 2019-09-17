@@ -1,5 +1,5 @@
 {
-  "name": "prettier",
+  "name": "@miksu/prettier",
   "version": "1.18.1",
   "description": "Prettier is an opinionated code formatter",
   "bin": {

@@ -465,7 +465,7 @@ function getPreferredQuote(raw, preferredQuote) {
 function printString(raw, options, isDirectiveLiteral) {
   // `rawContent` is the string exactly like it appeared in the input source
   // code, without its enclosing quotes.
-  const rawContent = raw.slice(1, -1);
+  const rawContent = raw;
 
   // Check for the alternate quote, to determine if we're allowed to swap
   // the quotes on a DirectiveLiteral.

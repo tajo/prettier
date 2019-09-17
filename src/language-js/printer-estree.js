@@ -6661,7 +6661,9 @@ function printIndentableBlockComment(comment) {
 }
 
 function rawText(node) {
-  return node.extra ? node.extra.raw : node.raw;
+  // our artifically created AST doesn't have extra property
+  //return node.extra ? node.extra.raw : node.raw;
+  return node.value;
 }
 
 function identity(x) {
