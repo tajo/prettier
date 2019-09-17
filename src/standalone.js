@@ -3,10 +3,6 @@
 const version = require("../package.json").version;
 
 const core = require("./main/core");
-const getSupportInfo = require("./main/support").getSupportInfo;
-const sharedUtil = require("./common/util-shared");
-
-const doc = require("./doc");
 
 const internalPlugins = [require("./language-js")];
 
@@ -45,13 +41,7 @@ module.exports = {
     return formatted === text;
   },
 
-  doc,
-
-  getSupportInfo: withPlugins(getSupportInfo),
-
   version,
-
-  util: sharedUtil,
 
   __debug: {
     parse: withPlugins(core.parse),

@@ -7,6 +7,7 @@ const createError = require("../common/parser-create-error");
 const hasPragma = require("./pragma").hasPragma;
 const locFns = require("./loc");
 const postprocess = require("./postprocess");
+const babelParser = require("@babel/parser");
 
 function babelOptions(extraOptions, extraPlugins) {
   return Object.assign(
@@ -47,8 +48,6 @@ function babelOptions(extraOptions, extraPlugins) {
 function createParse(parseMethod, extraPlugins) {
   return (text, parsers, opts) => {
     // Inline the require to avoid loading all the JS if we don't use it
-    const babel = require("@babel/parser");
-
     const combinations = [
       babelOptions(
         { strictMode: true },
@@ -70,7 +69,10 @@ function createParse(parseMethod, extraPlugins) {
 
     let ast;
     try {
-      ast = tryCombinations(babel[parseMethod].bind(null, text), combinations);
+      ast = tryCombinations(
+        babelParser[parseMethod].bind(null, text),
+        combinations
+      );
     } catch (error) {
       throw createError(
         // babel error prints (l:c) with cols that are zero indexed
