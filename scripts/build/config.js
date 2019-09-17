@@ -1,7 +1,6 @@
 "use strict";
 
 const path = require("path");
-const PROJECT_ROOT = path.resolve(__dirname, "../..");
 
 /**
  * @typedef {Object} Bundle

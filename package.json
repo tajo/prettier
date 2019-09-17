@@ -16,7 +16,8 @@
   "dependencies": {
     "@angular/compiler": "7.2.9",
     "@babel/code-frame": "7.5.5",
-    "@babel/parser": "7.2.0",
+    "@babel/parser": "^7.6.0",
+    "@babel/runtime-corejs2": "7.6.0",
     "@glimmer/syntax": "0.41.0",
     "@iarna/toml": "2.2.3",
     "@typescript-eslint/typescript-estree": "1.11.0",
@@ -77,9 +78,10 @@
     "yaml-unist-parser": "1.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.6.0",
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "babel-loader": "8.0.6",
     "benchmark": "2.1.4",
     "builtin-modules": "2.0.0",
@@ -130,7 +132,7 @@
     "lint": "cross-env EFF_NO_LINK_RULES=true eslint . --format friendly",
     "lint-docs": "prettylint {.,docs,website,website/blog}/*.md",
     "lint-dist": "eslint --no-eslintrc --no-ignore --env=browser \"dist/!(bin-prettier|index|third-party).js\"",
-    "build": "node --max-old-space-size=2048 ./scripts/build/build.js",
+    "build": "babel src --out-dir lib",
     "build-docs": "node ./scripts/build-docs.js",
     "check-deps": "node ./scripts/check-deps.js"
   }
