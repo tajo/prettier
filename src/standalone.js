@@ -8,15 +8,7 @@ const sharedUtil = require("./common/util-shared");
 
 const doc = require("./doc");
 
-const internalPlugins = [
-  require("./language-css"),
-  require("./language-graphql"),
-  require("./language-handlebars"),
-  require("./language-html"),
-  require("./language-js"),
-  require("./language-markdown"),
-  require("./language-yaml")
-];
+const internalPlugins = [require("./language-js")];
 
 const isArray =
   Array.isArray ||
