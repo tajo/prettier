@@ -2073,7 +2073,7 @@ function printPathNoParens(path, options, print, args) {
             options.jsxSingleQuote ? "'" : '"'
           );
           const escape = quote === "'" ? "&apos;" : "&quot;";
-          final = final.slice(1, -1).replace(new RegExp(quote, "g"), escape);
+          final = final.replace(new RegExp(quote, "g"), escape);
           res = concat([quote, final, quote]);
         } else {
           res = path.call(print, "value");

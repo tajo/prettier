@@ -433,7 +433,7 @@ function getIndentSize(value, tabWidth) {
 function getPreferredQuote(raw, preferredQuote) {
   // `rawContent` is the string exactly like it appeared in the input source
   // code, without its enclosing quotes.
-  const rawContent = raw.slice(1, -1);
+  const rawContent = raw;
 
   const double = { quote: '"', regex: /"/g };
   const single = { quote: "'", regex: /'/g };
