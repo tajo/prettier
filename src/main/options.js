@@ -1,8 +1,6 @@
 "use strict";
 
-const fs = require("fs");
 const normalizePath = require("normalize-path");
-const readlines = require("n-readlines");
 const UndefinedParserError = require("../common/errors").UndefinedParserError;
 const getSupportInfo = require("../main/support").getSupportInfo;
 const normalizer = require("./options-normalizer");
@@ -117,47 +115,8 @@ function getPlugin(options) {
   return printerPlugin;
 }
 
-function getInterpreter(filepath) {
-  if (typeof filepath !== "string") {
-    return "";
-  }
-
-  let fd;
-  try {
-    fd = fs.openSync(filepath, "r");
-  } catch (err) {
-    return "";
-  }
-
-  try {
-    const liner = new readlines(fd);
-    const firstLine = liner.next().toString("utf8");
-
-    // #!/bin/env node, #!/usr/bin/env node
-    const m1 = firstLine.match(/^#!\/(?:usr\/)?bin\/env\s+(\S+)/);
-    if (m1) {
-      return m1[1];
-    }
-
-    // #!/bin/node, #!/usr/bin/node, #!/usr/local/bin/node
-    const m2 = firstLine.match(/^#!\/(?:usr\/(?:local\/)?)?bin\/(\S+)/);
-    if (m2) {
-      return m2[1];
-    }
-    return "";
-  } catch (err) {
-    // There are some weird cases where paths are missing, causing Jest
-    // failures. It's unclear what these correspond to in the real world.
-    return "";
-  } finally {
-    try {
-      // There are some weird cases where paths are missing, causing Jest
-      // failures. It's unclear what these correspond to in the real world.
-      fs.closeSync(fd);
-    } catch (err) {
-      // nop
-    }
-  }
+function getInterpreter() {
+  return "";
 }
 
 function inferParser(filepath, plugins) {
