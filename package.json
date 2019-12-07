@@ -1,10 +1,7 @@
 {
   "name": "@miksu/prettier",
-  "version": "1.18.3",
+  "version": "1.18.5",
   "description": "Prettier is an opinionated code formatter",
-  "bin": {
-    "prettier": "./bin/prettier.js"
-  },
   "repository": "prettier/prettier",
   "homepage": "https://prettier.io",
   "author": "James Long",
